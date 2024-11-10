@@ -1,0 +1,25 @@
+<mat-toolbar color="primary">
+<ul class="flex gap-2 p-5 shadow">
+  <li>
+      <h1>TwitterEdu FE</h1>
+  </li>
+  <li>
+      <a routerLink="/login">Login</a>
+
+  </li>
+  <li>
+      <a routerLink="/register">Registrace</a>
+  </li>
+  <li>
+      <a routerLink="/home">Index</a>
+  </li>
+  <li>
+      <!--{{user$ | async}}-->
+  </li>
+  <li>
+    <!-- (click)="logout()" -->
+      <button type="button" >Odhlásit</button>
+  </li>
+</ul>
+</mat-toolbar>
+<router-outlet />
