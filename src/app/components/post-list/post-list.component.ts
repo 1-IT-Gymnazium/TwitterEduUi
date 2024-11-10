@@ -1,7 +1,7 @@
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { AsyncPipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -11,28 +11,27 @@ import {
 } from '@angular/forms';
 import { PostService } from '../../services/post.service';
 import { PostDetailComponent } from '../post-detail/post-detail.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-post-list',
   standalone: true,
-  imports: [AsyncPipe, FormsModule, ReactiveFormsModule, MatInputModule, MatButtonModule, PostDetailComponent],
+  imports: [ RouterLink, AsyncPipe, FormsModule, ReactiveFormsModule, MatInputModule, MatButtonModule, PostDetailComponent],
   templateUrl: './post-list.component.html',
   styleUrl: './post-list.component.scss',
 })
 export class PostListComponent {
-  protected formular;
-  protected posts$;
+  protected readonly fb = inject(FormBuilder);
+  protected readonly postService = inject(PostService);
 
-  constructor(fb: FormBuilder, protected postService: PostService) {
-    this.formular = fb.group({
-      content: new FormControl('', {
-        nonNullable: true,
-        validators: [Validators.required],
-      }),
-    });
+  protected formular = this.fb.group({
+    content: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.required],
+    }),
+  });
 
-    this.posts$ = this.postService.getPosts();
-  }
+  protected posts$ = this.postService.getPosts();
 
   showForm: boolean = false;
 

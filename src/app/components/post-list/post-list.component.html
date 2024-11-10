@@ -2,13 +2,19 @@
 <button mat-button color="primary" type="button" (click)="showForm = true">
   Přidat post
 </button>
-} @if (!showForm){
+} @if (showForm){
 <!-- p-6 shadow-lg w-full max-w-md -->
 <section class="grid grid-cols-1 gap-4">
   <form [formGroup]="formular" (ngSubmit)="onSubmit()">
     <div>
       <mat-form-field appearance="fill" class="w-full">
-        <input class="" placeholder="Co se Vám honí hlavou…" matInput formControlName="content" id="content" />
+        <input
+          class=""
+          placeholder="Co se Vám honí hlavou…"
+          matInput
+          formControlName="content"
+          id="content"
+        />
       </mat-form-field>
     </div>
     <div class="flex justify-end space-x-2">
@@ -33,9 +39,10 @@
     </div>
   </form>
 </section>
-} @if(posts$ | async; as posts) {
-  @for(post of posts; track post) {
+} @if(posts$ | async; as posts) { @for(post of posts; track post) {
 <section class="mb-3">
-  <app-post-detail [item]="post"></app-post-detail>
+  <a routerLink="/post/detail/{{ post.id }}">
+    <app-post-detail [item]="post"></app-post-detail>
+  </a>
 </section>
 } @empty { Žádná data :-( } }

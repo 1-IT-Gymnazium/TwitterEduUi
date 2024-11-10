@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { PostDetail } from '../../models/post-detail.interface';
 import { PostDetailComponent } from "../../components/post-detail/post-detail.component";
 
@@ -9,12 +9,7 @@ import { PostDetailComponent } from "../../components/post-detail/post-detail.co
   templateUrl: './post-detail-page.component.html',
   styleUrl: './post-detail-page.component.scss'
 })
-export class PostDetailPage implements AfterViewInit {
- @Input() post!: PostDetail;
+export class PostDetailPage {
+ readonly post = input.required<PostDetail>();
 
- ngAfterViewInit(): void {
-  console.log('wtf');
-  console.log(this.post)
-
- }
 }
