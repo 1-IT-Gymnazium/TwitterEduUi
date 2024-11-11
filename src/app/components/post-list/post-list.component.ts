@@ -1,5 +1,4 @@
-import { MatInputModule } from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
+
 import { AsyncPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import {
@@ -16,7 +15,7 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-post-list',
   standalone: true,
-  imports: [ RouterLink, AsyncPipe, FormsModule, ReactiveFormsModule, MatInputModule, MatButtonModule, PostDetailComponent],
+  imports: [ RouterLink, AsyncPipe, FormsModule, ReactiveFormsModule, PostDetailComponent],
   templateUrl: './post-list.component.html',
   styleUrl: './post-list.component.scss',
 })

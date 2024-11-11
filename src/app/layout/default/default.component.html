@@ -1,25 +1,50 @@
-<mat-toolbar color="primary">
-<ul class="flex gap-2 p-5 shadow">
-  <li>
-      <h1>TwitterEdu FE</h1>
-  </li>
-  <li>
-      <a routerLink="/login">Login</a>
+<nav class="bg-gray-800 p-2">
+  <div class="container mx-auto flex text-white justify-between items-center">
+    <h1>TwitterEdu FE</h1>
+    <div class="hidden md:flex space-x-2">
+      <ul class="flex gap-2 p-2 shadow">
+        <li>
+         <!--{ <a routerLink="/login">Login</a>-->
+        </li>
+        <li>
+          <!--{<a routerLink="/register">Registrace</a>-->
+        </li>
+        <li>
+          <a routerLink="/">Index</a>
+        </li>
+        <li>
+          <!--{{user$ | async}}-->
+        </li>
+        <li>
+          <!-- (click)="logout()"
+          <button type="button">Odhlásit</button> -->
+        </li>
+      </ul>
+    </div>
+    <div class="relative inline-block text-left">
+      <div>
+        <button type="button" class="flex items-center text-white focus:outline-none" id="menu-button" aria-expanded="true" aria-haspopup="true">
+          <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path
+            d="M10 10a4 4 0 100-8 4 4 0 000 8zm0 2a8 8 0 00-7.93 6.58c-.07.29.16.58.47.58h15a.5.5 0 00.47-.58A8 8 0 0010 12z"
+          />
+          </svg>
+          <svg class="ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
 
-  </li>
-  <li>
-      <a routerLink="/register">Registrace</a>
-  </li>
-  <li>
-      <a routerLink="/">Index</a>
-  </li>
-  <li>
-      <!--{{user$ | async}}-->
-  </li>
-  <li>
-    <!-- (click)="logout()" -->
-      <button type="button" >Odhlásit</button>
-  </li>
-</ul>
-</mat-toolbar>
+      <!-- Dropdown menu -->
+      <div class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+        <div class="py-1" role="none">
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1">Profile</a>
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1">Settings</a>
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1">Logout</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
 <router-outlet />

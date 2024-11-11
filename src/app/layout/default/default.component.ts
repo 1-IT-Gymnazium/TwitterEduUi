@@ -1,6 +1,5 @@
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { MatToolbar } from '@angular/material/toolbar';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -10,8 +9,7 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
     CommonModule,
     RouterOutlet,
     RouterLink,
-    AsyncPipe,
-    MatToolbar
+    AsyncPipe
   ],
   templateUrl: './default.component.html',
   styleUrl: './default.component.scss',

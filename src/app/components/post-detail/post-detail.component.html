@@ -1,14 +1,21 @@
-<mat-card class="post-card">
-  <mat-card-header>
-    <div mat-card-avatar><mat-icon>account_circle</mat-icon></div>
-    <mat-card-title>Jouda Sphp</mat-card-title>
-    <mat-card-subtitle>{{ item.id }}</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <p>{{ item.content }}</p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-icon-button><mat-icon>favorite</mat-icon></button>
-    <button mat-icon-button><mat-icon>share</mat-icon></button>
-  </mat-card-actions>
-</mat-card>
+<div class="max-w-lg mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+  <div class="flex items-center px-6 py-3 bg-gray-800">
+    <!-- Use Flowbite icon here -->
+    <svg
+      class="h-10 w-10 text-white"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+    >
+      <path
+        d="M10 10a4 4 0 100-8 4 4 0 000 8zm0 2a8 8 0 00-7.93 6.58c-.07.29.16.58.47.58h15a.5.5 0 00.47-.58A8 8 0 0010 12z"
+      />
+    </svg>
+    <h1 class="mx-3 text-white font-semibold">User Name</h1>
+  </div>
+  <div class="px-6 py-4">
+    <p class="text-gray-700 text-base">
+      {{ item.content }}
+    </p>
+  </div>
+</div>
