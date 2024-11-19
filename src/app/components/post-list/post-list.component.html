@@ -1,5 +1,5 @@
 @if (!showForm){
-<button class="my-3 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700 disabled:bg-gray-400" type="button" (click)="showForm = true">
+<button class="my-3 bg-purple-400 text-white py-2 px-4 rounded-lg hover:bg-purple-700" type="button" (click)="showForm = true">
   Přidat post
 </button>
 } @if (showForm){
@@ -8,7 +8,7 @@
   <form [formGroup]="formular" (ngSubmit)="onSubmit()">
     <div>
       <input
-        class="form-control block w-full p-2.5 border border-gray-300 rounded-lg focus:border-blue-500"
+        class="form-control block w-full p-2.5 border border-gray-300 rounded-lg focus:border-purple-200"
         placeholder="Co se Vám honí hlavou…"
         formControlName="content"
         id="content"
@@ -16,7 +16,7 @@
     </div>
     <div class="my-2 flex justify-end space-x-2">
       <button
-        class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700 disabled:bg-gray-400"
+        class="bg-purple-400 text-white py-2 px-4 rounded-lg hover:bg-purple-700 disabled:bg-purple-200"
         type="submit"
         [disabled]="formular.invalid"
       >
@@ -26,7 +26,7 @@
       <button
         color="accent"
         type="button"
-        class="p-2 bg-white-300 text-black py-2 px-4 rounded-lg hover:bg-blue-700"
+        class="p-2 text-teal-400 text-black py-2 px-4 rounded-lg hover:bg-teal-400 hover:text-black"
         (click)="closeForm()"
       >
         Zrušit
