@@ -8,6 +8,7 @@ import {
 import { Observable } from 'rxjs';
 import {tap} from "rxjs/operators";
 import {Router} from "@angular/router";
+import { AUTH_TOKEN } from '../contexts/token.context';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -20,10 +21,11 @@ export class TokenInterceptor implements HttpInterceptor {
             return next.handle(request);
         }
         // edit request
+        const token = request.context.get(AUTH_TOKEN);
         request = request.clone({
             // bring token from sessionStorage and add as header
             setHeaders: {
-                Authorization: `Bearer ${sessionStorage.getItem("token")}`
+                Authorization: `Bearer ${token}`
             }
         });
         return next.handle(request);
