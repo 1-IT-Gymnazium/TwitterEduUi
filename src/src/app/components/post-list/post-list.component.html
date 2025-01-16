@@ -34,7 +34,8 @@
     </div>
   </form>
 </section>
-} @if(posts$ | async; as posts) { @for(post of posts; track post) {
+} @if(posts$ | async; as posts) { 
+  @for(post of posts; track post) {
 <section class="mb-3">
   <a routerLink="/post/detail/{{ post.id }}">
     <app-post-detail [item]="post"></app-post-detail>
