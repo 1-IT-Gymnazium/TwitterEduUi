@@ -1,34 +1,21 @@
-import { Injectable } from '@angular/core';
-import {
-    HttpRequest,
-    HttpHandler,
-    HttpEvent,
-    HttpInterceptor, HttpErrorResponse
-} from '@angular/common/http';
-import { Observable } from 'rxjs';
-import {tap} from "rxjs/operators";
-import {Router} from "@angular/router";
+import { HttpInterceptorFn } from '@angular/common/http';
 import { AUTH_TOKEN } from '../contexts/token.context';
+import { inject } from '@angular/core';
 
-@Injectable()
-export class TokenInterceptor implements HttpInterceptor {
+export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
+  if (req.url.includes('/login')) {
+    return next(req);
+  }
 
-    constructor(private router: Router) {}
+  const token = inject(AUTH_TOKEN);
 
-    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        // except for /login endpoint
-        if (request.url.includes('/login')) {
-            return next.handle(request);
-        }
-        // edit request
-        const token = request.context.get(AUTH_TOKEN);
-        request = request.clone({
-            // bring token from sessionStorage and add as header
-            setHeaders: {
-                Authorization: `Bearer ${token}`
-            }
-        });
-        return next.handle(request);
-    }
-
-}
+  // edit request
+  console.log(token());
+  req = req.clone({
+    // bring token from sessionStorage and add as header
+    setHeaders: {
+      Authorization: `Bearer ${token()}`,
+    },
+  });
+  return next(req);
+};

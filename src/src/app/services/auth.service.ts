@@ -13,7 +13,7 @@ export class AuthService {
   private baseUrl = '/api/v1/Auth';
   private readonly router = inject(Router);
   private readonly httpClient = inject(HttpClient);
-  private readonly httpContext = inject(HttpContext);
+  private readonly token = inject(AUTH_TOKEN);
   private isLoggedInSubject = new ReplaySubject<boolean>(1);
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
 
@@ -21,9 +21,11 @@ export class AuthService {
     return this.httpClient
       .post<any>(`${this.baseUrl}/Login`, data)
       .pipe(tap((response) => {
-        const token = response;
-        const context = new HttpContext().set(AUTH_TOKEN, token);
+        const token = response.token;
+        console.log(token);
+        this.token.set(token);
 
+        this.router.navigate(['/home']);
         this.isLoggedInSubject.next(true)
       }
       ));
