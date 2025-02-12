@@ -24,6 +24,15 @@ export class AuthService {
     }
   }
 
+  confirmToken(token: string, email: string) {
+    let data = { token, email };
+    return this.httpClient.post<any>(`${this.baseUrl}/ValidateToken`, data).pipe(
+      tap((response) => {
+          console.log(response);
+      })
+    )
+  }
+
   login(data: LoginModel): Observable<any> {
     return this.httpClient.post<any>(`${this.baseUrl}/Login`, data).pipe(
       tap((response) => {

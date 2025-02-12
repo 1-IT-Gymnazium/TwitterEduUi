@@ -7,6 +7,7 @@ import { postDetailResolver } from './resolvers/post-detail-resolver';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { AuthGuard } from './guards/auth.guard';
+import { TokenConfirmationPageComponent } from './pages/token-confirmation-page/token-confirmation-page.component';
 
 export const routes: Routes = [
   {
@@ -16,6 +17,7 @@ export const routes: Routes = [
       { path: '', component: HomePageComponent, title: 'Home', canActivate: [AuthGuard] },
       { path: 'register', component: RegisterPageComponent, title: 'Registrace' },
       { path: 'login', component: LoginPageComponent, title: 'Login' },
+      { path: 'confirm-token', component: TokenConfirmationPageComponent, title: 'Ověření emailu'},
       {
         path: 'not-found',
         component: NotFoundPageComponent,

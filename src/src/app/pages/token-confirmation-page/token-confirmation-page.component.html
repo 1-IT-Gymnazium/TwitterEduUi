@@ -1,0 +1,24 @@
+<div class="max-w-md mx-auto p-6 bg-white shadow-lg rounded-lg">
+    <h2 class="text-xl font-semibold text-center">Confirm Your Email</h2>
+
+    <p class="text-gray-600 text-center">
+        Email: <strong>{{ email }}</strong>
+    </p>
+    @if (error()) {
+    <div class="p-3 bg-red-100 text-red-600 mt-3 rounded-md">
+        {{ error() }}
+    </div>
+    }
+
+    @if(success()){
+    <div class="p-3 bg-green-100 text-green-600 mt-3 rounded-md">
+        Email confirmed! Redirecting...
+    </div>
+    }
+    <button class="w-full mt-4 px-4 py-2 bg-blue-600 text-white font-medium rounded-md 
+             hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed" (click)="confirmEmail()"
+        [disabled]="loading() || success()">
+        <span *ngIf="!loading()">Confirm</span>
+        <span *ngIf="loading()">Confirming...</span>
+    </button>
+</div>
